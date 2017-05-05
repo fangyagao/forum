@@ -1,0 +1,1 @@
+{"php":"5.6.19","version":"2.3.0:v2.3.0#ab8c61329ddd896e287a84c7663d06cf1bed3907","rules":{"no_unused_imports":true,"binary_operator_spaces":true,"no_trailing_whitespace":true,"indentation_type":true,"phpdoc_no_empty_return":true,"phpdoc_to_comment":true},"hashes":{"app\/Http\/Controllers\/ThreadController.php":4260665193,"app\/Http\/Controllers\/ReplyController.php":4242815389}}
