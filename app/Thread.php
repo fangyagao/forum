@@ -4,11 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Thread extends Model
-{
+class Thread extends Model {
+
 	protected $guarded = [];
 
-    //
+	//
 	public function path()
 	{
 		return "/threads/{$this->channel->slug}/$this->id";
@@ -32,5 +32,10 @@ class Thread extends Model
 	public function addReply($reply)
 	{
 		return $this->replies()->create($reply);
+	}
+
+	public function scopeFilter($query, $filters)
+	{
+		return $filters->apply($query);
 	}
 }
