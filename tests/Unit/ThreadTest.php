@@ -10,13 +10,19 @@ class ThreadTest extends TestCase {
 
 	use DatabaseMigrations;
 
-	private $thread;
+	protected $thread;
 
 	public function setUp()
 	{
 		parent::setUp();
 
 		$this->thread = factory('App\Thread')->create();
+	}
+	
+	/** @test */
+	public function a_thread_can_make_a_string_path()
+	{
+		$this->assertEquals("/threads/{$this->thread->channel->slug}/{$this->thread->id}", $this->thread->path());
 	}
 	
 	/** @test */
@@ -38,5 +44,13 @@ class ThreadTest extends TestCase {
 			'body' => 'Foobar',
 			'user_id' => 1,
 		]);
+
+		$this->assertCount(1, $this->thread->replies);
+	}
+	
+	/** @test */
+	public function a_thread_belongs_to_a_channel()
+	{
+		$this->assertInstanceOf('App\Channel', $this->thread->channel);
 	}
 }
