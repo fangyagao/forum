@@ -77,12 +77,12 @@ class ThreadController extends Controller
 	/**
 	 * Display the specified resource.
 	 *
-	 * @param              $channelId
+	 * @param              $channel
 	 * @param  \App\Thread $thread
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
-    public function show($channelId, Thread $thread)
+    public function show($channel, Thread $thread)
     {
         //
         return view('threads.show', [
@@ -91,38 +91,28 @@ class ThreadController extends Controller
 		]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Thread  $thread
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Thread $thread)
+	/**
+	 * Remove the specified resource from storage.
+	 *
+	 * @param              $channelId
+	 * @param  \App\Thread $thread
+	 *
+	 * @return \Illuminate\Http\Response
+	 */
+    public function destroy($channel, Thread $thread)
     {
         //
-    }
+		$this->authorize('update', $thread);
+		if($thread->user_id != auth()->id()) {
+			abort(403, 'You do not have permission to do this.');
+		}
+		$thread->delete();
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Thread  $thread
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Thread $thread)
-    {
-        //
-    }
+		if(request()->wantsJson()) {
+			return response([], 204);
+		}
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Thread  $thread
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Thread $thread)
-    {
-        //
+		return redirect('/threads');
     }
 
 	/**

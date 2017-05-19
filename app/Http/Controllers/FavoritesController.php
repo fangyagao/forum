@@ -20,9 +20,13 @@ class FavoritesController extends Controller {
 
 	/**
 	 * @param \App\Reply $reply
+	 *
+	 * @return \Illuminate\Http\RedirectResponse
 	 */
 	public function store(Reply $reply)
 	{
-		return $reply->favorite();
+		$reply->favorite();
+
+		return back();
 	}
 }
