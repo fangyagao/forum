@@ -11,6 +11,10 @@
 |
 */
 
+Route::get('/a', function(){
+	return view('welcome1');
+});
+
 Route::get('/', 'ThreadController@index');
 Route::get('/home', 'ThreadController@index');
 Auth::routes();

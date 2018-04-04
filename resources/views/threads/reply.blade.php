@@ -10,7 +10,7 @@
                 </h5>
 
                 <div>
-                    <favorite :reply="{{ $reply }}"></favorite>
+                    {{--<favorite :reply="{{ $reply }}"></favorite>--}}
                 </div>
             </div>
 

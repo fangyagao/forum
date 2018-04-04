@@ -1,10 +1,10 @@
 <script>
-    import Favorite from './Favorite.vue';
+//    import Favorite from './Favorite.vue';
 
     export default {
         props: ['attributes'],
 
-        components: { Favorite },
+//        components: { Favorite },
 
         data() {
             return {

@@ -11,13 +11,19 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link http-equiv="x-pjax-version" href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     <!-- Scripts -->
     <script>
         window.Laravel = {!! json_encode([
             'csrfToken' => csrf_token(),
         ]) !!};
+
+//        $(document).pjax('a', '#pjax-container');
+//        $(document).on("pjax:timeout", function(event) {
+//            // 阻止超时导致链接跳转事件发生
+//            event.preventDefault()
+//        });
     </script>
     <style>
         body { padding-bottom: 100px;}
